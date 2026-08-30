@@ -44,6 +44,10 @@ GitHub 和 Email 目前是明显的占位状态；在 `src/data/profile.ts` 填�
 
 后续可将 Markdown / MDX 文章放入内容目录，并为 `/notes/[slug]` 接入解析逻辑。
 
-## 部署
+## 部署到 Cloudflare Pages
 
-将仓库推送至 GitHub 后，在 Vercel 导入项目即可部署。Vercel 会自动识别 Next.js，构建命令使用 `npm run build`。
+项目已配置 Next.js static export，构建完成后会生成 `out/` 目录。将仓库推送至 GitHub 后，在 Cloudflare Pages 导入项目，并使用以下配置：
+
+- Build command：`npm run build`
+- Build output directory：`out`
+- Node.js：建议在构建环境变量中设置 `NODE_VERSION=20`（Next.js 16 要求 Node.js 20.9 或更高版本）
