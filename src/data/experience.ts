@@ -1,0 +1,1 @@
+export const experiences = [{ organization: "江门市中心医院", role: "医学影像 AI 实习", period: "2025.07 — 2026.07", summary: "围绕医学影像 AI 的数据、算法验证与临床使用场景展开工作，在工程实现与实际需求之间建立连接。", areas: ["DICOM / NIfTI", "数据质控", "算法验证", "临床需求沟通"] }] as const;

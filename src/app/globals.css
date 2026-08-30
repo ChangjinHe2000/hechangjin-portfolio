@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+:root { --ink: #edf4ff; --muted: #91a1b8; --faint: #627087; --surface: #0b111d; --surface-raised: #101827; --line: rgba(157, 181, 214, .15); --blue: #79adff; --cyan: #57d4d1; --canvas: #070b12; }
+* { box-sizing: border-box; }
+html { background: var(--canvas); }
+body { background: var(--canvas); color: var(--ink); font-family: Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+::selection { background: rgba(87, 212, 209, .3); color: white; }
+.page-shell { width: min(100% - 2rem, 1180px); margin-inline: auto; }
+.section-space { padding-block: 6.5rem; }
+.eyebrow { display: flex; align-items: center; gap: .6rem; color: var(--cyan); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: .7rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.eyebrow::before { width: 1.5rem; height: 1px; content: ""; background: currentColor; }
+.section-title { max-width: 39rem; margin-top: 1rem; font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 650; letter-spacing: -.055em; line-height: 1.08; }
+.section-intro { max-width: 38rem; margin-top: 1.2rem; color: var(--muted); font-size: 1rem; line-height: 1.8; }
+.surface-card { border: 1px solid var(--line); background: rgba(16, 24, 39, .62); }
+.surface-card:hover { border-color: rgba(121, 173, 255, .36); }
+.text-link { display: inline-flex; align-items: center; gap: .45rem; color: var(--ink); font-size: .9rem; font-weight: 600; transition: color 160ms ease; }
+.text-link:hover { color: var(--cyan); }
+.grid-rule { position: relative; }
+.grid-rule::before { position: absolute; top: 0; right: 0; left: 0; height: 1px; content: ""; background: var(--line); }
+@media (max-width: 640px) { .page-shell { width: min(100% - 1.5rem, 1180px); } .section-space { padding-block: 4.75rem; } }
