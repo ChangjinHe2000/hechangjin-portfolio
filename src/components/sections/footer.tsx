@@ -1,4 +1,4 @@
-import { GithubIcon, MailIcon } from "@/components/icons";
+import { ArrowUpRight, GithubIcon, MailIcon } from "@/components/icons";
 import { profile } from "@/data/profile";
 
 export function Footer() {
@@ -6,12 +6,11 @@ export function Footer() {
   const emailHref = profile.links.email ? `mailto:${profile.links.email}` : "#contact";
 
   return (
-    <footer id="contact" className="page-shell py-14 sm:py-20">
-      <div className="flex flex-col justify-between gap-12 border-t border-[var(--line)] pt-10 lg:flex-row lg:items-end">
-        <div><p className="eyebrow">07 / Contact</p><h2 className="mt-5 max-w-xl text-3xl font-semibold tracking-[-.055em] text-white sm:text-5xl">Let&apos;s build useful AI, end to end.</h2><p className="mt-5 max-w-md leading-7 text-[var(--muted)]">GitHub 和邮箱链接将在确认后补充到这里。欢迎通过简历或其他已知渠道与我联系。</p></div>
-        <div className="flex gap-3"><a href={githubHref} title={profile.links.github ? "GitHub" : "GitHub link to be added"} className="inline-flex h-10 items-center gap-2 border border-[var(--line)] px-4 text-sm text-[var(--faint)] transition-colors hover:border-[var(--blue)] hover:text-white"><GithubIcon className="h-4 w-4" />GitHub</a><a href={emailHref} title={profile.links.email ? "Email" : "Email address to be added"} className="inline-flex h-10 items-center gap-2 border border-[var(--line)] px-4 text-sm text-[var(--faint)] transition-colors hover:border-[var(--blue)] hover:text-white"><MailIcon className="h-4 w-4" />Email</a></div>
+    <footer id="contact" className="bg-[#d7ebf6]">
+      <div className="page-shell py-16 sm:py-24">
+        <div className="grid gap-10 lg:grid-cols-[1.2fr_.8fr] lg:items-end"><div><p className="inline-flex rounded-full bg-[#fffaf2] px-3 py-1.5 text-xs font-bold text-[var(--blue)]">一起做点有用的东西吧</p><h2 className="mt-6 max-w-2xl text-[clamp(3rem,5.3vw,5.4rem)] font-semibold leading-[.93] tracking-[-.09em] text-[var(--ink-strong)]">Let&apos;s build<br />something useful.</h2><p className="mt-6 max-w-xl leading-8 text-[#50656e]">如果你也相信 AI 的价值来自真实的产品体验，欢迎来聊聊。</p></div><div className="flex flex-wrap gap-3 lg:justify-end"><a href={githubHref} title={profile.links.github ? "GitHub" : "GitHub link to be added"} className="inline-flex h-11 items-center gap-2 rounded-full bg-[#fffaf2] px-5 text-sm font-bold text-[var(--ink-strong)] transition-transform hover:-translate-y-0.5"><GithubIcon className="h-4 w-4" />GitHub <ArrowUpRight className="h-4 w-4 text-[var(--blue)]" /></a><a href={emailHref} title={profile.links.email ? "Email" : "Email address to be added"} className="inline-flex h-11 items-center gap-2 rounded-full bg-[#fffaf2] px-5 text-sm font-bold text-[var(--ink-strong)] transition-transform hover:-translate-y-0.5"><MailIcon className="h-4 w-4" />Email <ArrowUpRight className="h-4 w-4 text-[var(--blue)]" /></a></div></div>
+        <div className="mt-16 flex flex-col justify-between gap-2 text-xs text-[#6d8088] sm:flex-row"><p>© {new Date().getFullYear()} {profile.englishName}</p><p>Made with curiosity · Static & Cloudflare Pages ready</p></div>
       </div>
-      <div className="mt-14 flex flex-col justify-between gap-3 text-xs text-[var(--faint)] sm:flex-row"><p>© {new Date().getFullYear()} {profile.englishName}</p><p>Built with Next.js · Deployed on Vercel</p></div>
     </footer>
   );
 }

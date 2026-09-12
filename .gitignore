@@ -26,6 +26,10 @@
 *.pem
 /简历.psd
 
+# local source photos (the deployed avatar is /public/avatar.jpg)
+/头像.jpg
+/微信图片_20260912175540_413_97.jpg
+
 # debug
 npm-debug.log*
 yarn-debug.log*

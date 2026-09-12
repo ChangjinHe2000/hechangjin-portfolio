@@ -1,32 +1,36 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, GithubIcon } from "@/components/icons";
-import { SectionHeading } from "@/components/section-heading";
+import { ArrowUpRight } from "@/components/icons";
 import { projects } from "@/data/projects";
 
-export function Projects() {
+function ProjectArtwork() {
   return (
-    <section id="projects" className="border-y border-[var(--line)] bg-[var(--surface)]">
-      <div className="page-shell section-space">
-        <SectionHeading eyebrow="02 / Selected work" title="From AI capability to complete application." description="围绕真实工作流设计：模型、知识、服务和界面不是彼此孤立的部分，而是一个完整系统。" />
-        <div className="mt-12 grid gap-5">
-          {projects.map((project, index) => (
-            <article key={project.slug} className="surface-card group grid overflow-hidden lg:grid-cols-[1.35fr_.65fr]">
-              <div className="p-7 sm:p-10">
-                <div className="flex items-center justify-between gap-4"><p className="font-mono text-xs tracking-[.14em] text-[var(--cyan)]">0{index + 1} / {project.status}</p><span className="h-2 w-2 rounded-full bg-[var(--cyan)]" /></div>
-                <p className="mt-10 text-xs font-semibold uppercase tracking-[.12em] text-[var(--blue)]">{project.eyebrow}</p>
-                <h3 className="mt-3 text-3xl font-bold tracking-[-.055em] text-white sm:text-4xl">{project.name}</h3>
-                <p className="mt-5 max-w-xl leading-8 text-[var(--muted)]">{project.description}</p>
-                <div className="mt-7 flex flex-wrap gap-2">{project.tags.map((tag) => <span key={tag} className="border border-[var(--line)] px-2.5 py-1 text-xs text-[#b6c5d9]">{tag}</span>)}</div>
-                <div className="mt-9 flex flex-wrap items-center gap-5"><Link href={`/projects/${project.slug}`} className="text-link">Project details <ArrowUpRight className="h-4 w-4" /></Link><span title="GitHub link to be added" className="inline-flex cursor-default items-center gap-2 text-sm font-medium text-[var(--faint)]"><GithubIcon className="h-4 w-4" />GitHub / coming soon</span></div>
-              </div>
-              <div className="relative min-h-52 border-t border-[var(--line)] bg-[#0b1321] p-7 lg:border-l lg:border-t-0 sm:p-10">
-                <div className="absolute inset-0 opacity-70 [background-image:linear-gradient(90deg,rgba(121,173,255,.08)_1px,transparent_1px),linear-gradient(rgba(121,173,255,.08)_1px,transparent_1px)] [background-size:32px_32px]" />
-                <div className="relative flex h-full flex-col justify-between"><span className="w-fit border border-[rgba(87,212,209,.3)] bg-[rgba(87,212,209,.06)] px-2 py-1 font-mono text-[10px] tracking-[.12em] text-[var(--cyan)]">SYSTEM OVERVIEW</span><div><p className="font-mono text-xs leading-7 text-[var(--muted)]">IMAGING → AI → REPORTING<br />KNOWLEDGE → ANSWER</p><div className="mt-4 h-px w-full bg-[var(--line)]" /><div className="mt-4 flex justify-end"><ArrowRight className="h-6 w-6 text-[var(--blue)]" /></div></div></div>
-              </div>
-            </article>
-          ))}
-        </div>
+    <div className="relative isolate aspect-[1.28/1] overflow-hidden rounded-[2.8rem_1.4rem_2.8rem_1.4rem] bg-[#dceef7] p-7 sm:p-10">
+      <div className="absolute -left-[8%] top-[16%] h-[52%] w-[49%] rounded-full bg-[#b8d6e7]" />
+      <div className="absolute bottom-[-16%] right-[2%] h-[56%] w-[52%] rounded-[44%_56%_51%_49%/58%_44%_56%_42%] bg-[#f7c875]" />
+      <div className="absolute right-[15%] top-[8%] h-[15%] w-[15%] rounded-full bg-[#b6a9df]" />
+      <div className="absolute bottom-[17%] left-[21%] h-[12%] w-[12%] rounded-full bg-[#e98d70]" />
+      <div className="absolute inset-[23%] flex rotate-[-4deg] flex-col justify-center rounded-[48%_52%_45%_55%/45%_48%_52%_55%] bg-[#fffefa] px-8 py-6 text-center shadow-[0_18px_40px_rgba(52,98,123,.12)] sm:px-12">
+        <p className="text-xs font-bold tracking-[.11em] text-[var(--blue)]">FULL-STACK MEDICAL AI</p>
+        <p className="mt-3 text-[clamp(2rem,4vw,3.5rem)] font-semibold leading-none tracking-[-.08em] text-[var(--ink-strong)]">PPGL<br />Assist</p>
+        <p className="mt-4 text-xs leading-5 text-[var(--muted)]">from scan → understanding → report</p>
       </div>
+      <p className="absolute left-7 top-7 text-xs font-bold text-[#377aa8] sm:left-10 sm:top-10">a product case study</p>
+      <p className="absolute bottom-7 right-7 text-xs font-bold text-[#796aa8] sm:bottom-10 sm:right-10">medical AI, with care</p>
+    </div>
+  );
+}
+
+export function Projects() {
+  const project = projects[0];
+
+  return (
+    <section id="projects" className="page-shell section-space">
+      <p className="eyebrow">我做过的作品</p>
+      <div className="mt-5 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"><h2 className="max-w-2xl text-[clamp(2.7rem,4.8vw,4.65rem)] font-semibold leading-[.98] tracking-[-.08em] text-[var(--ink-strong)]">一个值得被认真讲述的项目。</h2><p className="max-w-xs pb-1 text-sm leading-7 text-[var(--muted)]">我想展示的不是功能清单，而是如何把技术拼成一条完整的使用路径。</p></div>
+      <article className="mt-12 grid items-center gap-10 lg:grid-cols-[.95fr_1.05fr] lg:gap-16">
+        <ProjectArtwork />
+        <div className="max-w-xl"><p className="text-sm font-bold text-[var(--coral)]">{project.eyebrow}</p><h3 className="mt-4 text-4xl font-semibold tracking-[-.07em] text-[var(--ink-strong)] sm:text-5xl">{project.name}</h3><p className="mt-5 leading-8 text-[var(--muted)]">{project.description}</p><ul className="mt-7 space-y-3 text-sm leading-6 text-[#536168]">{project.features.slice(0, 3).map((feature) => <li key={feature} className="flex gap-3"><span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#efaf54]" />{feature}</li>)}</ul><div className="mt-7 flex flex-wrap gap-2">{project.tags.map((tag) => <span key={tag} className="rounded-full bg-[#eef3f4] px-3 py-1.5 text-xs font-semibold text-[#59686e]">{tag}</span>)}</div><Link href={`/projects/${project.slug}`} className="text-link mt-8">读这个项目的故事 <ArrowUpRight className="h-4 w-4" /></Link></div>
+      </article>
     </section>
   );
 }
