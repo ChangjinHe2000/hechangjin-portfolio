@@ -17,7 +17,7 @@ export function Hero() {
           </p>
 
           <div className="mt-2 flex flex-col gap-3 lg:mt-3 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
-            <div className="flex w-fit min-w-0 items-start gap-2.5 sm:gap-4">
+            <div className="flex w-fit min-w-0 items-start gap-2.5 sm:gap-4 lg:items-center lg:gap-5">
               <div className="min-w-0">
                 <p className="whitespace-nowrap text-[10px] font-bold tracking-[.06em] text-[var(--cyan)] min-[375px]:text-xs min-[375px]:tracking-[.08em]">AI APPLICATION DEVELOPER</p>
                 <h1 className="mt-1 text-[clamp(2.3rem,9.5vw,3.75rem)] font-semibold leading-none tracking-[-.08em] text-[var(--ink-strong)]">
@@ -31,8 +31,8 @@ export function Hero() {
                 width={1794}
                 height={1876}
                 unoptimized
-                sizes="(min-width: 640px) 6rem, (min-width: 375px) 5rem, 4rem"
-                className="mt-1 h-[4.5rem] w-[4.5rem] shrink-0 rotate-[-3deg] rounded-[48%_52%_45%_55%/46%_48%_52%_54%] object-cover shadow-[0_10px_20px_rgba(50,67,75,.12)] min-[375px]:h-20 min-[375px]:w-20 sm:h-24 sm:w-24"
+                sizes="(min-width: 1024px) 7rem, (min-width: 640px) 6rem, (min-width: 375px) 5rem, 4.5rem"
+                className="mt-1 h-[4.5rem] w-[4.5rem] shrink-0 rotate-[-3deg] rounded-[48%_52%_45%_55%/46%_48%_52%_54%] object-cover shadow-[0_10px_20px_rgba(50,67,75,.12)] min-[375px]:h-20 min-[375px]:w-20 sm:h-24 sm:w-24 lg:mt-0 lg:h-28 lg:w-28"
               />
             </div>
 
