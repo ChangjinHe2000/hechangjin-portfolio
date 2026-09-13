@@ -125,8 +125,10 @@ export function RotatingWorkbench() {
     } catch {
       return;
     }
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    renderer.setPixelRatio(isCoarsePointer ? 1 : Math.min(window.devicePixelRatio, 1.5));
     renderer.setClearColor(0x000000, 0);
+    renderer.domElement.style.touchAction = "pan-y";
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     host.appendChild(renderer.domElement);
@@ -140,6 +142,8 @@ export function RotatingWorkbench() {
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.enablePan = false;
+    controls.enableRotate = !isCoarsePointer;
+    controls.enableZoom = !isCoarsePointer;
     controls.minDistance = 7;
     controls.maxDistance = 12;
     controls.target.set(0, 0.1, 0);
@@ -149,7 +153,7 @@ export function RotatingWorkbench() {
     const keyLight = new THREE.DirectionalLight(0xffffff, 3.4);
     keyLight.position.set(4, 7, 6);
     keyLight.castShadow = true;
-    keyLight.shadow.mapSize.set(1024, 1024);
+    keyLight.shadow.mapSize.set(isCoarsePointer ? 512 : 1024, isCoarsePointer ? 512 : 1024);
     scene.add(keyLight);
     const fillLight = new THREE.PointLight(0x72b5e4, 18, 12);
     fillLight.position.set(-4, 2, 3);
@@ -164,19 +168,24 @@ export function RotatingWorkbench() {
     ground.receiveShadow = true;
     scene.add(ground);
 
-    const render = () => {
+    const draw = () => {
+      renderer.render(scene, camera);
+    };
+
+    const resize = () => {
       const { width, height } = host.getBoundingClientRect();
       if (!width || !height) return;
       renderer.setSize(width, height);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       camera.lookAt(0, 0.15, 0);
-      renderer.render(scene, camera);
+      draw();
     };
 
-    const resizeObserver = new ResizeObserver(render);
+    const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(host);
-    render();
+    resize();
+    controls.addEventListener("change", draw);
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     controls.autoRotate = !reducedMotion;
@@ -185,7 +194,7 @@ export function RotatingWorkbench() {
     const animate = (time: number) => {
       workbench.rotation.z = Math.sin(time / 2400) * 0.025;
       controls.update();
-      render();
+      draw();
       animationFrame = requestAnimationFrame(animate);
     };
     if (!reducedMotion) animationFrame = requestAnimationFrame(animate);
@@ -193,6 +202,7 @@ export function RotatingWorkbench() {
     return () => {
       cancelAnimationFrame(animationFrame);
       resizeObserver.disconnect();
+      controls.removeEventListener("change", draw);
       controls.dispose();
       renderer.dispose();
       renderer.domElement.remove();
@@ -203,7 +213,7 @@ export function RotatingWorkbench() {
   return (
     <div className="relative mx-auto aspect-square w-full max-w-[29rem]" aria-label="缓慢旋转的原创 AI 工作台 3D 场景">
       <div className="absolute inset-[7%] rotate-[-7deg] rounded-[48%_52%_54%_46%/44%_43%_57%_56%] bg-[#d8ebf6]" />
-      <div ref={canvasHostRef} className="absolute inset-[5%]" aria-hidden="true" />
+      <div ref={canvasHostRef} className="absolute inset-[5%] touch-pan-y" aria-hidden="true" />
       <div className="pointer-events-none absolute left-[4%] top-[19%] h-[15%] w-[15%] rounded-[57%_43%_41%_59%/50%_48%_52%_50%] bg-[#f6c56b]" />
       <div className="pointer-events-none absolute right-[6%] top-[10%] h-[11%] w-[11%] rounded-full bg-[#b2a8e1]" />
     </div>

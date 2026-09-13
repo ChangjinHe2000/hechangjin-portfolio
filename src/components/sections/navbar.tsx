@@ -14,7 +14,7 @@ export function Navbar() {
 
   return (
     <header className="relative z-40 bg-[var(--canvas)]">
-      <div className="page-shell relative flex h-[4.65rem] items-center">
+      <div className="page-shell relative flex h-16 items-center sm:h-[4.65rem]">
         <div className="flex items-center gap-5 sm:gap-10 md:absolute md:left-1/2 md:-translate-x-1/2">
           <a href="#home" className="inline-flex items-center gap-2 text-sm font-bold tracking-[-.045em] text-[var(--ink-strong)]" aria-label="Back to home">
             <span className="grid h-7 w-7 place-items-center rounded-[.65rem] bg-[var(--ink)] text-xs text-white">C</span>

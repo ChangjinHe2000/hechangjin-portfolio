@@ -20,13 +20,19 @@
 }
 
 * { box-sizing: border-box; }
-html { background: var(--canvas); }
+html {
+  background: var(--canvas);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: clip;
+}
 body {
   min-width: 320px;
   background: var(--canvas);
   color: var(--ink);
   font-family: "Noto Sans SC Variable", "Noto Sans SC", sans-serif;
   font-synthesis: none;
+  overflow-x: clip;
 }
 
 button, input, textarea, select { font: inherit; }
@@ -57,6 +63,6 @@ a { -webkit-tap-highlight-color: transparent; }
 .scribble-line { height: .75rem; border-top: 2px solid var(--ink); border-radius: 50%; transform: rotate(-1.2deg); }
 
 @media (max-width: 640px) {
-  .page-shell { width: min(100% - 1.5rem, 1120px); }
+  .page-shell { width: min(100% - 2rem, 1120px); }
   .section-space { padding-block: 5rem; }
 }
