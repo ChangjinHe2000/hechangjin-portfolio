@@ -1,4 +1,3 @@
-import { About } from "@/components/sections/about";
 import { Experience } from "@/components/sections/experience";
 import { Footer } from "@/components/sections/footer";
 import { Hero } from "@/components/sections/hero";
@@ -14,7 +13,6 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <About />
         <Projects />
         <TechStack />
         <Experience />
