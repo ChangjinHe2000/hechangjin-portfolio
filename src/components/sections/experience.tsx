@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { FlameProjectCard } from "@/components/flame-project";
+import { PpglResearchCard } from "@/components/ppgl-research";
 import { ExperienceOutcomes, HospitalMark } from "@/components/experience-summary";
 import { experiences } from "@/data/experience";
 
@@ -6,7 +8,7 @@ export function Experience() {
   return (
     <section id="experience" aria-labelledby="experience-heading" className="page-shell scroll-mt-6 py-10 sm:py-14">
       <div className="mx-auto max-w-[48rem]">
-        <h2 id="experience-heading" className="eyebrow">实习经历</h2>
+        <h2 id="experience-heading" className="eyebrow">实习与项目经历</h2>
         {experiences.map((experience) => (
           <Link
             key={experience.slug}
@@ -36,6 +38,8 @@ export function Experience() {
             </div>
           </Link>
         ))}
+        <FlameProjectCard />
+        <PpglResearchCard />
       </div>
     </section>
   );
