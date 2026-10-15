@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FlameProjectCard } from "@/components/flame-project";
 import { PpglResearchCard } from "@/components/ppgl-research";
+import { MriProjectCard } from "@/components/mri-project";
 import { ExperienceOutcomes, HospitalMark } from "@/components/experience-summary";
 import { experiences } from "@/data/experience";
 
@@ -40,6 +41,7 @@ export function Experience() {
         ))}
         <FlameProjectCard />
         <PpglResearchCard />
+        <MriProjectCard />
       </div>
     </section>
   );
